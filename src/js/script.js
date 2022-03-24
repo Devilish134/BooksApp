@@ -35,5 +35,29 @@
     }
   };
 
+  const favoriteBooks = [];
+
+  const initAction = function () {
+
+    const bookList = document.querySelector(select.list.booksList);
+
+    bookList.addEventListener('dblclick', function (event){
+      event.preventDefault();
+
+      const clickedElement = event.target.offsetParent;
+
+      if(clickedElement.classList.contains('favorite')) {
+        clickedElement.classList.remove('favorite');
+        favoriteBooks.splice(clickedElement, 1);
+      } else {
+        clickedElement.classList.add('favorite');
+        favoriteBooks.push(clickedElement);
+      }
+      console.log(favoriteBooks);
+    });
+
+  };
+
   render();
+  initAction();
 }
